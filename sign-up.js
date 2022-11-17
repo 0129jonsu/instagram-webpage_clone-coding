@@ -18,34 +18,35 @@ app.get('/style.css', function(req, res) {
     res.sendFile(__dirname + "/" + "instagram-web.css");
 });
 
-
 app.use(express.json())
 app.use(express.urlencoded({ extends: true})) //이거 써야 req.body로 입력값 받을 수 있
 
 app.post( '/', (req ,res) => {
     req.body;
-
-    const conn = {  // mysql 접속 설정
-        host: 'user-data.cmagpshmnsos.ap-northeast-2.rds.amazonaws.com',
-        port: '3306',
-        user: 'admin',
-        password: process.env.MYSQLPASSWORD,
-        database: 'user_data'
-    };
-    
-    var connection = mysql.createConnection(conn);
-    
-    connection.connect();
-    
-    let sql = "insert into user_data.sign_up_table set ?";
-    let data = {user_numorem : req.body.mnoe, user_name : req.body.fn, user_id : req.body.un, user_pw : req.body.pw};
-    connection.query(sql, data, function (err, results, fields) {
-        if (err) {
-            console.log(err);
-        }
-        console.log(results);
+    console.log(req.body.mnoe.length);
+    if(req.body.mnoe.length >= 1 && req.body.fn >= 1 && req.body.un >= 1 && req.body.pw >= 6){
+        const conn = {  // mysql 접속 설정
+            host: 'user-data.cmagpshmnsos.ap-northeast-2.rds.amazonaws.com',
+            port: '3306',
+            user: 'admin',
+            password: process.env.MYSQLPASSWORD,
+            database: 'user_data'
+        };
+        
+        var connection = mysql.createConnection(conn);
+        
+        connection.connect();
+        
+        let sql = "insert into user_data.sign_up_table set ?";
+        let data = {user_numorem : req.body.mnoe, user_name : req.body.fn, user_id : req.body.un, user_pw : req.body.pw};
+        connection.query(sql, data, function (err, results, fields) {
+            if (err) {
+                console.log(err);
+            }
+            console.log(results);
     });
-    
+    }
+    connection.end();
 });
 
 
@@ -63,12 +64,12 @@ app.get( '/db'/*라우팅*/, (req ,res) => {
     connection.connect();
     
     let sql = "select * from user_data.sign_up_table";
-    var abc = connection.query(sql, function (err, results, fields) {
+    var sign_up_data = connection.query(sql, function (err, results, fields) {
         if (err) {
             console.log(err);
         }
         console.log(results);
     });
 
-    console.log(abc)
+    console.log(sign_up_data)
 });

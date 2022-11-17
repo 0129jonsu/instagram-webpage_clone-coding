@@ -47,6 +47,29 @@ app.post( '/sign_up', (req ,res) => {
     }   
 });
 
+app.post( '/sign_in', (req ,res) => {
+    const conn = {  // mysql 접속 설정
+        host: 'user-data.cmagpshmnsos.ap-northeast-2.rds.amazonaws.com',
+        port: '3306',
+        user: 'admin',
+        password: process.env.MYSQLPASSWORD,
+        database: 'user_data'
+    };
+
+    var connection = mysql.createConnection(conn);
+    
+    connection.connect();
+    
+    let sql = "select * from user_data.sign_up_table";
+    var sign_up_data = connection.query(sql, function (err, results, fields) {
+        if (err) {
+            console.log(err);
+        }
+        console.log(results);
+    });
+
+    console.log(sign_up_data.user_numorem)
+});
 
 app.get( '/db'/*라우팅*/, (req ,res) => {
     const conn = {  // mysql 접속 설정
@@ -69,6 +92,5 @@ app.get( '/db'/*라우팅*/, (req ,res) => {
         console.log(results);
     });
 
-    console.log(sign_up_data)
+    console.log(sign_up_data.user_numorem)
 });
-

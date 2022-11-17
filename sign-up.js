@@ -21,10 +21,9 @@ app.get('/style.css', function(req, res) {
 app.use(express.json())
 app.use(express.urlencoded({ extends: true})) //이거 써야 req.body로 입력값 받을 수 있
 
-app.post( '/', (req ,res) => {
+app.post( '/sign_up', (req ,res) => {
     req.body;
-    console.log(req.body.mnoe.length);
-    if(req.body.mnoe.length >= 1 && req.body.fn >= 1 && req.body.un >= 1 && req.body.pw >= 6){
+    if(req.body.mnoe.length >= 1 && req.body.fn.length >= 1 && req.body.un.length >= 1 && req.body.pw.length >= 6){
         const conn = {  // mysql 접속 설정
             host: 'user-data.cmagpshmnsos.ap-northeast-2.rds.amazonaws.com',
             port: '3306',
@@ -44,9 +43,8 @@ app.post( '/', (req ,res) => {
                 console.log(err);
             }
             console.log(results);
-    });
-    }
-    connection.end();
+        });
+    }   
 });
 
 
@@ -73,3 +71,4 @@ app.get( '/db'/*라우팅*/, (req ,res) => {
 
     console.log(sign_up_data)
 });
+

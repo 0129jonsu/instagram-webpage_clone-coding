@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="uft-8">
+        <link rel="stylesheet" href="instagram-web.css" type="text/css">
+        <script src="sign-up.js"></script>
+        <script src="instagram-web.js"></script>
+    </head>
+
+    <body>
+        <div class="main">
+            <div class="sign-up-box">
+                <div class="sign-up-box-in">
+                    <!-- logo -->
+                    <div class="logo">
+                        <img src="instagram-pic\instagram-logo.png" style="width:175px; height:51px">
+                    </div>
+                    <!-- Sign up to see photos and videos from your friends. -->
+                    <div style="
+                    text-align:center; 
+                    color:rgb(142 142 171); 
+                    font-size: 16px;
+                    margin-left: 40px;
+                    margin-right: 40px;
+                    margin-bottom: 10px;
+                    ">
+                        <strong>Sign up to see photos and videos from your friends.</strong>
+                    </div>
+                    <!-- facebook login -->
+                    <div style="margin-right:40px; margin-left:40px; margin-top:8px; margin-bottom:8px;;">
+                        <button class="login-facebook-sign-up">
+
+                            <img src="instagram-pic\instagram-facebook-white.png" style="margin-right:5px; " >
+                            Log in with Facebook
+                        </button>
+                    </div>
+                    <!-- ororororor -->
+                    <div style="margin-top:10px; margin-bottom:18px">
+                        <hr class="or-line" color="#dbdbdb" size="1">
+                        <span style="font-size:13px; margin-left:12px; margin-right:12px">OR</span>
+                        <hr class="or-line" color="#dbdbdb" size="1">
+                    </div>
+                    <!-- Mobile Number or Email -->
+                        <form style="display:flex; flex-direction: column; align-items:baseline" name = "user_data" action="/" method="post">
+                            <div class="idpw_1">
+                                <input name = "mnoe" type="text" class="idpw_2" placeholder="Mobile Number or Email"
+                                id="sign_up_mobile_email"
+                                onkeyup="sign_up_input()">
+                            </div>
+                            <!-- Full Name -->
+                            <div class="idpw_1">
+                                <input name = "fn" type="text" class="idpw_2" placeholder="Full Name"
+                                id="sign_up_full_name"
+                                onkeyup="sign_up_input()">
+                            </div>
+                            <!-- Username -->
+                            <div class="idpw_1">
+                                <input name = "un" type="text" class="idpw_2" placeholder="Username"
+                                id="sign_up_user_name"
+                                onkeyup="sign_up_input()">
+                            </div>
+                            <!-- Password -->
+                            <div class="idpw_1">
+                                <input name = "pw" type="text" class="idpw_2" placeholder="Password"
+                                id="sign_up_pw"
+                                onkeyup="sign_up_input()">
+                            </div>
+
+                            <div style="text-align:center;
+                            font-size: 12px;
+                            color: rgb(156 156 156);
+                            margin-right: 40px;
+                            margin-left: 40px;
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+                            ">
+                                People who use our service may have uploaded your contact information to Instagram. <a style="color:rgb(155 155 155)"><strong style="cursor:pointer">Learn More</strong></a>
+                            </div>
+                            <div style="display:flex; flex-direction: column; align-items:center">
+                                <button class="sign-up-button" id="sign-up-button">
+                                    <div style="color:white"><strong>Sign up</strong></div>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                <div class="right-sign-up">
+                    <span style="margin-right:5px">Have an account?</span>
+                    <span style="color:rgb(0 155 255);"><a href="index.html" style="text-decoration:none;
+                        color: inherit;">Log in</a></span>
+                </div>
+                <div>
+                    <div class="get-app">
+                        Get the app.
+                    </div>
+                    <!-- google play download button -->
+                    <div class="buttons">
+                        <div>
+                            <img class="app-button" src="instagram-pic\instagram-google-play.png" alt="" style="width:134px; height:40px; margin-right:8px">
+                        </div>
+                        <!-- microsoft~~ -->
+                        <div>
+                            <img class="app-button" src="instagram-pic\instagram-microsoft.png" alt="" style="width:111px; height:40px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer style="font-size:12px; color:gray;">
+            <div class="ft">
+                <span class="footer_1">Meta</span>
+                <span class="footer_1">About</span>
+                <span class="footer_1">Blog</span>
+                <span class="footer_1">Jobs</span>
+                <span class="footer_1">Help</span>
+                <span class="footer_1">API</span>
+                <span class="footer_1">Privacy</span>
+                <span class="footer_1">Terms</span>
+                <span class="footer_1">Top Accounts</span>
+                <span class="footer_1">Hashtags</span>
+                <span class="footer_1">Locations</span>
+                <span class="footer_1">Instagram Lite</span>
+                <span class="footer_1">Contact Uploading & Non-Users</span>
+            </div>
+                
+            <div class="sel">
+                <span>
+                    <span>English</span>
+                    <svg aria-label="아래쪽 V자형 아이콘"  style="transform: scaleY(-1)"color="#8e8e8e" fill="#8e8e8e" height="12" role="img" viewBox="0 0 24 24" width="12"><path d="M21 17.502a.997.997 0 0 1-.707-.293L12 8.913l-8.293 8.296a1 1 0 1 1-1.414-1.414l9-9.004a1.03 1.03 0 0 1 1.414 0l9 9.004A1 1 0 0 1 21 17.502Z"></path></svg>
+                    <select id="language-select" style="border:none; 
+                    color:gray;     
+                    outline: none;
+                    display: none;
+                    ">
+                        <option>English</option>
+                    </select>
+                    
+                </span>
+                <span style="
+                margin-left: 8px;
+                margin-right: 8px;
+                margin-bottom: 12px;">
+                © 2022 Instagram from Meta
+                </span>
+            </div>
+        </footer>
+
+    </body>
+</html>

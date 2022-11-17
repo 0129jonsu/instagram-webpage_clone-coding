@@ -1,0 +1,25 @@
+{
+  "name": "instagram-webpage_clone-coding",
+  "version": "1.0.0",
+  "description": "study html, css",
+  "main": "sign-up.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0129jonsu/instagram-webpage_clone-coding.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0129jonsu/instagram-webpage_clone-coding/issues"
+  },
+  "homepage": "https://github.com/0129jonsu/instagram-webpage_clone-coding#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "puppeteer": "^19.2.2"
+  }
+}

@@ -1,0 +1,228 @@
+body{
+    background-color: rgb(250 250 250);
+}
+.main{
+    background-color: rgb(250 250 250);
+    display:flex;
+    justify-content: center;
+    margin-top:32px;
+    padding-bottom:32px
+}
+.left{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left:15px;
+    width: 350px;
+    height: 697px;
+    flex-direction: column;
+}
+.right-sign-in{
+    background-color: rgb(255 255 255);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 348px;
+    height: 380px;
+    margin-top:10px;
+    margin-bottom: 10px;
+    padding-top:10px;
+    padding-bottom: 10px;
+    border: 1px solid rgb(219 219 219);
+}
+.right-sign-up{
+    background-color: rgb(255 255 255);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+
+    width: 348px;
+    height: 41px;
+    margin-bottom: 10px;
+    padding-top:10px;
+    padding-bottom: 10px;
+    border: 1px solid rgb(219 219 219);
+    font-size: 14px;
+    
+}
+.logo{
+    margin-top: 36px;
+    margin-bottom: 12px;
+}
+.logo:hover{
+    cursor: pointer;
+}
+.idpw_1{
+    background-color: rgb(250 250 250);
+    border:1px solid rgb(219 219 219);
+    border-radius: 3px;
+
+    display: flex;
+    width: 268px;
+    height: 36px;
+    margin-bottom: 6px;
+}
+.idpw_2{
+    border: none;
+    width:94%;
+    outline: none;
+    background-color: rgb(250 250 250);
+    padding-top:9px;
+    padding-bottom:8px;
+    padding-left:7px;
+}
+.login-button{
+    width: 270px;
+    height: 30px;
+
+    border: none;
+    background-color: rgb(178 223 252);
+    border-radius: 3px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.or-line{
+    width: 107px;
+    display: inline-block;
+}
+.login-facebook{
+    background-color: white;
+    border: none;
+    margin-top:8px;
+    margin-bottom:8px;
+    width: 268px;
+}
+.login-facebook:hover{
+    cursor: pointer;
+}
+.fp{
+    width: 348px;
+    height: 16px;
+    margin-top:12px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 12px;
+}
+.fp:hover{
+    cursor: pointer;
+}
+.get-app{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    margin-top:10px;
+    margin-bottom:2px;
+}
+.app-button:hover{
+    cursor: pointer;
+}
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer_1{
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-bottom: 12px;
+}
+.footer_1:hover{
+    cursor: pointer;
+}
+.ft{
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center;
+
+    margin-top:24px;
+}
+select{
+    appearance: none;
+}
+.sel{
+    border: none;
+    outline: none;
+    font-size:12px;
+    color:gray;
+    margin-top:12px; 
+    margin-bottom:12px"
+}
+.sel:hover{
+    cursor: pointer;
+}
+option{
+    color:black;
+    font-size:12px;
+}
+
+.login-facebook-sign-up{
+    background-color: rgb(0 149 246);
+    border-radius: 5px;
+    border-color: rgb(0 149 246);
+    color: white;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top:5px;
+    padding-bottom: 5px;
+    border:1px;
+    width: 248px;
+}
+.login-facebook-sign-up:hover{
+    cursor: pointer;
+}
+.sign-up-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left:15px;
+    width: 350px;
+    height: 768px;
+    flex-direction: column;
+}
+.sign-up-box-in{
+    background-color: rgb(255 255 255);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 348px;
+    height: 554px;
+    margin-top:10px;
+    margin-bottom: 10px;
+    padding-top:10px;
+    padding-bottom: 10px;
+    border: 1px solid rgb(219 219 219);
+}
+.sign-up-button{
+    width: 270px;
+    height: 30px;
+
+    border: none;
+    background-color: rgb(178 223 252);
+    border-radius: 3px;
+    margin-top: 8px;
+    margin-bottom: 8px
+}
+
+@media (max-width:875px) {
+    .left{
+        display: none;
+    }
+}

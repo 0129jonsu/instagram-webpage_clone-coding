@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const dotenv = require('dotenv').config();
+
 app.use(express.static(__dirname));
 
 app.listen(3000, () => {
@@ -23,7 +24,6 @@ app.use(express.urlencoded({ extends: true})) //이거 써야 req.body로 입력
 
 app.post( '/', (req ,res) => {
     req.body;
-    console.log(req.body);
 
     const conn = {  // mysql 접속 설정
         host: 'user-data.cmagpshmnsos.ap-northeast-2.rds.amazonaws.com',
@@ -69,5 +69,6 @@ app.get( '/db'/*라우팅*/, (req ,res) => {
         }
         console.log(results);
     });
+
     console.log(abc)
 });

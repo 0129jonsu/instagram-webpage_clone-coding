@@ -71,7 +71,7 @@ app.post( '/sign_in', (req ,res) => {
     let sql_check_id = "select * from user_data.sign_up_table where user_id = ?";
     let sql_check_pw = "select * from user_data.sign_up_table where user_pw = ?";
     connection.query(sql_check_id, id , function (err, results, fields){
-        if(results.length && results[0].user_id === id){ // check id
+        if(results.length && results[0].user_id == id){ // check id
             connection.query(sql_check_pw, pw, function (err, results, fields){
                 if(err){
                     throw err;
@@ -82,19 +82,23 @@ app.post( '/sign_in', (req ,res) => {
                     req.session.isLogined=true;
                     req.session.save(function(){
                         console.log(req.session);
+                        return res.redirect("main.html");
                     });
-                    return res.redirect("main.html");
+                    
                 }
                 else {
                     res.write("<script>alert('pw false')</script>");
+                    res.write("<script>window.location=\"index.html\"</script>");
                 }
             })
         }
         else{
             res.write("<script>alert('id false')</script>");
+            res.write("<script>window.location=\"index.html\"</script>");s
+            // 로그인 실패 시 원래 화면 해야됨
         }
     })
-    return res.redirect("index.html");
+    
 });
 
 

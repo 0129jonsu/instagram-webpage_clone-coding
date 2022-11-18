@@ -66,39 +66,35 @@ app.post('/sign_up', (req ,res) => {
 
 
 app.post( '/sign_in', (req ,res) => {
-    const id = req.body.sign_in_id;
-    const pw = req.body.sign_in_id;
+    const id = req.body.sign_in_id; //id
+    const pw = req.body.sign_in_pw; //pw
     let sql_check_id = "select * from user_data.sign_up_table where user_id = ?";
     let sql_check_pw = "select * from user_data.sign_up_table where user_pw = ?";
-    let check_id = {user_id : id};
-    let check_pw = {user_id : pw};
-    connection.query(sql_check_id, check_id , function (err, results, fields){
-        if(results.length){
-            if(results[0].name === id){
-                connection.query(sql_check_pw, check_pw, function (err, results, fields){
-                    if(err){
-                        throw err;
-                    }
-                    if(results.length){
-                        req.session.uid=results[0].id;
-                        req.session.upw=results[0].pw;
-                        req.session.isLogined=true;
-                        //console.log(req.session);
-                        req.session.save(function(){
-                            res.json({'result':'ok'});
-
-                        })
-                    }
-                    else {
-                        res.json({'result':'pwfalse'});
-                    }
-                })
-            }
+    connection.query(sql_check_id, id , function (err, results, fields){
+        if(results.length && results[0].user_id === id){ // check id
+            connection.query(sql_check_pw, pw, function (err, results, fields){
+                if(err){
+                    throw err;
+                }
+                if(results.length && results[0].user_id === id && results[0].user_pw === pw){ // check pw
+                    req.session.uid=results[0].user_id;
+                    req.session.upw=results[0].user_pw;
+                    req.session.isLogined=true;
+                    req.session.save(function(){
+                        console.log(req.session);
+                    });
+                    return res.redirect("main.html");
+                }
+                else {
+                    res.write("<script>alert('pw false')</script>");
+                }
+            })
         }
         else{
-            res.json({'result' : 'idfalse'});
+            res.write("<script>alert('id false')</script>");
         }
     })
+    return res.redirect("index.html");
 });
 
 

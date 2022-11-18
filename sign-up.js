@@ -7,6 +7,8 @@ const dotenv = require('dotenv').config();
 const crypto = require('crypto');
 
 const dbConfig = require('./dbConfig');
+const { errors } = require('puppeteer');
+const { mainModule } = require('process');
 
 const app = express();
 app.use(express.static(__dirname));
@@ -36,6 +38,15 @@ var dbOptions = {
 var connection = mysql.createConnection(dbOptions);
 connection.connect();
 
+var sessionStore = new MySQLStore(dbOptions);
+
+app.use(session({
+    secret:'my key',
+    resave:false,
+    saveUninitialized:true,
+    store:sessionStore,
+}))
+
 app.post('/sign_up', (req ,res) => {
     req.body;
     if(req.body.mnoe.length >= 1 && req.body.fn.length >= 1 && req.body.un.length >= 1 && req.body.pw.length >= 6){
@@ -55,40 +66,39 @@ app.post('/sign_up', (req ,res) => {
 
 
 app.post( '/sign_in', (req ,res) => {
-    var connection = mysql.createConnection(conn);
-    connection.connect();
+    const id = req.body.sign_in_id;
+    const pw = req.body.sign_in_id;
     let sql_check_id = "select * from user_data.sign_up_table where user_id = ?";
-    let check_id = {user_id : req.body.sign_in_id};
-    var sign_in_check_id = connection.query(sql_check_id, check_id , function (err, results, fields) {
-        if (err) {
-            console.log(err);
-        }
-    });
-    //console.log(sign_in_check_id._results);
-
     let sql_check_pw = "select * from user_data.sign_up_table where user_pw = ?";
-    let check_pw = {user_pw : req.body.sign_in_pw};
-    var sign_in_check_pw = connection.query(sql_check_pw, check_pw , function (err, results, fields) {
-        if (err) {
-            console.log(err);
-        }
-    });
-    //console.log(sign_in_check_pw._results);
-    console.log(req.body.sign_in_id)
-    console.log(req.body.sign_in_pw)
+    let check_id = {user_id : id};
+    let check_pw = {user_id : pw};
+    connection.query(sql_check_id, check_id , function (err, results, fields){
+        if(results.length){
+            if(results[0].name === id){
+                connection.query(sql_check_pw, check_pw, function (err, results, fields){
+                    if(err){
+                        throw err;
+                    }
+                    if(results.length){
+                        req.session.uid=results[0].id;
+                        req.session.upw=results[0].pw;
+                        req.session.isLogined=true;
+                        //console.log(req.session);
+                        req.session.save(function(){
+                            res.json({'result':'ok'});
 
-    //console.log(req.body.sign_in_id, req.body.sign_in_pw)
-    if(sign_in_check_id._results == "" || sign_in_check_pw._results == "") {
-        res.write("<script>alert('id or pw wrong')</script>");
-        console.log('틀림');
-        console.log(sign_in_check_id)
-        console.log(sign_in_check_pw)
-    }
-    else {
-        res.write("<script>alert('login success!')</script>");
-        console.log('맞음');
-    }
-    //[ [] ]
+                        })
+                    }
+                    else {
+                        res.json({'result':'pwfalse'});
+                    }
+                })
+            }
+        }
+        else{
+            res.json({'result' : 'idfalse'});
+        }
+    })
 });
 
 

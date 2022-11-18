@@ -1,9 +1,12 @@
-const mysql = require('mysql');
+var mysql = require('mysql')
 const express = require('express');
 const session = require("express-session");
 const MySQLStore = require("express-mysql-session")(session);
 const path = require('path');
 const dotenv = require('dotenv').config();
+const crypto = require('crypto');
+
+const dbConfig = require('./dbConfig');
 
 const app = express();
 app.use(express.static(__dirname));
@@ -22,22 +25,21 @@ app.get('/style.css', function(req, res) {
     res.sendFile(__dirname + "/" + "instagram-web.css");
 });
 
-const conn = {  // mysql 접속 설정
-    host: 'user-data.cmagpshmnsos.ap-northeast-2.rds.amazonaws.com',
-    port: '3306',
-    user: 'admin',
-    password: process.env.MYSQLPASSWORD,
-    database: 'user_data'
+var dbOptions = {
+    host : dbConfig.host,
+    port : dbConfig.port,
+    user : dbConfig.user,
+    password : dbConfig.password,
+    database : dbConfig.database
 };
+
+var connection = mysql.createConnection(dbOptions);
+connection.connect();
 
 app.post('/sign_up', (req ,res) => {
     req.body;
     if(req.body.mnoe.length >= 1 && req.body.fn.length >= 1 && req.body.un.length >= 1 && req.body.pw.length >= 6){
         
-        
-        var connection = mysql.createConnection(conn);
-        
-        connection.connect();
         
         let sql = "insert into user_data.sign_up_table set ?";
         let data = {user_numorem : req.body.mnoe, user_name : req.body.fn, user_id : req.body.un, user_pw : req.body.pw};
@@ -93,12 +95,6 @@ app.post( '/sign_in', (req ,res) => {
 
 
 app.get( '/db'/*라우팅*/, (req ,res) => {
-    
-
-    var connection = mysql.createConnection(conn);
-    
-    connection.connect();
-
     let sql = "select * from user_data.sign_up_table";
     var sign_up_data = connection.query(sql, function (err, results, fields) {
         if (err) {

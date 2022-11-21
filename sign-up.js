@@ -60,7 +60,9 @@ app.post('/sign_up', (req ,res) => {
             }
             console.log(results);
         });
-    }  
+        res.write("<script>alert('sign up! you can sign in')</script>");
+        return res.write("<script>window.location=\"index.html\"</script>");
+    } 
 });
 
 

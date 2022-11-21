@@ -1,1 +1,1 @@
-web: sign-up.js
+web: node sign-up.js

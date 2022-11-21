@@ -15,10 +15,10 @@ app.use(express.static(__dirname));
 app.use(express.json())
 app.use(express.urlencoded({extends: true})) //이거 써야 req.body로 입력값 받을 수 있
 
-const port = process.env.PORT;
-app.listen(PORT, () => {
-    console.log(`Example app listening on port ${PORT}`)
+app.listen(process.env.PORT || '3000', () => {
+    console.log(`Example app listening on port ${PORT}`);
 })
+app.set('port',port);
 
 app.get( '/', (req ,res) => {
     res.sendFile(path.join(__dirname, '/index.html'));

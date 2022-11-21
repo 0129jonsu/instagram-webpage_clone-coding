@@ -65,43 +65,59 @@ app.post('/sign_up', (req ,res) => {
 
 
 
-app.post( '/sign_in', (req ,res) => {
+app.post('/sign_in', (req ,res) => {
     const id = req.body.sign_in_id; //id
     const pw = req.body.sign_in_pw; //pw
     let sql_check_id = "select * from user_data.sign_up_table where user_id = ?";
     let sql_check_pw = "select * from user_data.sign_up_table where user_pw = ?";
-    connection.query(sql_check_id, id , function (err, results, fields){
-        if(results.length && results[0].user_id == id){ // check id
-            connection.query(sql_check_pw, pw, function (err, results, fields){
-                if(err){
-                    throw err;
-                }
-                if(results.length && results[0].user_id === id && results[0].user_pw === pw){ // check pw
-                    req.session.uid=results[0].user_id;
-                    req.session.upw=results[0].user_pw;
-                    req.session.isLogined=true;
-                    req.session.save(function(){
-                        console.log(req.session);
-                        return res.redirect("main.html");
-                    });
-                    
-                }
-                else {
-                    res.write("<script>alert('pw false')</script>");
-                    res.write("<script>window.location=\"index.html\"</script>");
-                }
-            })
-        }
-        else{
-            res.write("<script>alert('id false')</script>");
-            res.write("<script>window.location=\"index.html\"</script>");s
-            // 로그인 실패 시 원래 화면 해야됨
-        }
-    })
-    
+    if( req.body.sign_in_id.length >= 1 && req.body.sign_in_pw.length >=6){
+        connection.query(sql_check_id, id, function (err, results, fields){
+            if(results.length && results[0].user_id === id){ // check id
+                connection.query(sql_check_pw, pw, function (err, results, fields){
+                    if(err){
+                        throw err;
+                    }
+                    if(results.length && results[0].user_id === id && results[0].user_pw === pw){ // check pw
+                        req.session.user ={
+                            uid : results[0].user_id,
+                            upw : results[0].user_pw,
+                            isLogined : true
+                        }
+                        req.session.save(function(){
+                            console.log(req.session);
+                            return res.redirect("main.html");
+                        });
+                        
+                    }
+                    else {
+                        res.write("<script>alert('pw false')</script>");
+                        res.write("<script>window.location=\"index.html\"</script>");
+                    }
+                })
+            }
+            else{
+                res.write("<script>alert('id false')</script>");
+                return res.write("<script>window.location=\"index.html\"</script>");
+                // 로그인 실패 시 원래 화면 해야됨
+            }
+        })
+    }
 });
 
+app.post('/logout', (req ,res) => {
+    console.log('/logout 호출됨');
 
+    if(req.session.user){
+        console.log('logout!!');
+    
+        req.session.destroy(function(err){
+            if(err) throw err;
+            console.log('destroy session');
+            res.redirect('index.html');
+        })
+    }
+    
+});
 
 
 app.get( '/db'/*라우팅*/, (req ,res) => {

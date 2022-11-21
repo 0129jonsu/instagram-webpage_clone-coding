@@ -32,4 +32,18 @@ function sign_up_check(me,fn,un,pw) {
         document.getElementById("sign-up-button").style.backgroundColor = "rgb(178 223 252)";
         document.getElementById("sign-up-button").style.cursor="default";
     }
-} 
+}
+
+var imgArray = new Array();
+imgArray[0] = 'instagram-pic/instagram-pic1.png';
+imgArray[1] = 'instagram-pic/instagram-pic2.png';
+imgArray[2] = 'instagram-pic/instagram-pic3.png';
+imgArray[3] = 'instagram-pic/instagram-pic4.png';
+
+function showImage() {
+    var imgNum = Math.round(Math.random() * 3);
+    var objImg = document.getElementById("introImg");
+    objImg.src = imgArray[imgNum];
+
+    setTimeout("showImage()", 4000);
+}

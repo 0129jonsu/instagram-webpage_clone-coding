@@ -1,3 +1,5 @@
+const { password } = require("./dbConfig");
+
 function idpw_input(){
     var user_id = document.getElementById('user_id').value;
     var user_pw = document.getElementById('user_pw').value;
@@ -46,4 +48,20 @@ function showImage() {
     objImg.src = imgArray[imgNum];
 
     setTimeout("showImage()", 4000);
+}
+
+function pw_visivility(){
+    if(document.getElementById("user_pw").type == "password"){
+        document.getElementById("user_pw").type = "text";
+        document.getElementById("pwvi").innerText = "숨기기";
+        document.getElementById("pw_vs").style.textAlign="right";
+        document.getElementById("pw_vs").style.width="55px";
+
+    }
+    else if(document.getElementById("user_pw").type == "text"){
+        document.getElementById("user_pw").type = "password";
+        document.getElementById("pwvi").innerText = "비밀번호표시"
+        document.getElementById("pw_vs").style.width="125px";
+    }
+    console.log( document.getElementById("pwvi"))
 }

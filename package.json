@@ -4,7 +4,8 @@
   "description": "study html, css",
   "main": "sign-up.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node sign-up.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,10 @@
     "mysql": "^2.18.1",
     "path": "^0.12.7",
     "puppeteer": "^19.2.2"
+  },
+  "engines": {
+    "node": "18.12.1",
+    "npm": "8.19.2"
   }
 
 }

@@ -4,15 +4,14 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="instagram-web.css" type="text/css">
         <script src="instagram-web.js"></script>
-        <script src="sign-up.js"></script>
     </head>
 
-    <body onload="showImage()">
+    <body>
         <div class="main">
             <!-- left -->
             <div class="left" style="margin-right:15px">
                 <img src="instagram-pic\instagram-bg.png" >
-                <img id="introImg" style="position: absolute; top:82.5px; left:110px;">
+                <img src="instagram-pic\instagram-pic1.png" style="position: absolute; top:82.5px; left:110px">
             </div>
             <!-- right -->
             <div>
@@ -24,31 +23,26 @@
                             <img src="instagram-pic\instagram-logo.png" style="width:175px; height:51px">
                         </div>
                         <!-- id -->
-                        <form name = "sign_in_data" action="/sign_in" method="post">
-                            <div class="idpw_1" style="margin-top:24px">
-                                <input name = "sign_in_id" type="text" class="idpw_2" placeholder="Phone number, username, or email"
-                                id="user_id"
-                                onkeyup="idpw_input()">
-                            </div>
+                            
+                        <div class="idpw_1" style="margin-top:24px">
+                            <input type="text" class="idpw_2" placeholder="Phone number, username, or email"
+                            id="user_id"
+                            onkeyup="idpw_input()">
+                        </div>
 
-                            <!-- password -->
-                            <div class="idpw_1">
-                                <input name = "sign_in_pw" type="password" class="idpw_2_1" placeholder="Password"
-                                id="user_pw"
-                                onkeyup="idpw_input()">
-                                <button class = "pw_vs" id="pw_vs" type="button" onclick="pw_visivility()">
-                                    <div>
-                                        <strong id="pwvi">비밀번호표시</strong>
-                                    </div>
-                                </button>
-                            </div>
-                                <!-- login-button -->
-                            <div>
-                                <button class="login-button" id="login-button">
-                                    <div style="color:white">Log in</div>
-                                </button>
-                            </div>
-                        </form>
+                        <!-- password -->
+                        <div class="idpw_1">
+                            <input type="text" class="idpw_2" placeholder="Password"
+                            id="user_pw"
+                            onkeyup="idpw_input()">
+                        </div>
+                            <!-- login-button -->
+                        <div>
+                            <button class="login-button" id="login-button">
+                                <div style="color:white">Log in</div>
+                            </button>
+                        </div>
+
                         <div style="margin-top:10px; margin-bottom:18px">
                             <hr class="or-line" color="#dbdbdb" size="1">
                             <span style="font-size:13px; margin-left:12px; margin-right:12px">OR</span>

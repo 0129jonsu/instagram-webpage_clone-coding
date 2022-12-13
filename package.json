@@ -4,6 +4,7 @@
   "description": "study html, css",
   "main": "sign-up.js",
   "scripts": {
+    "start" : "sign-up.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
